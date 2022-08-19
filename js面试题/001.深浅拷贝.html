@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 浅拷贝
+		let obj1 ={id:1,name:'jack'}
+		let obj2 = obj1
+		obj1.name = 'tom'
+		obj2.id = 123
+		/* 浅拷贝拷贝的是引用,而不是真正的数据
+		两个数据会互相影响(改一个都会变) */
+		console.log('浅拷贝',obj1,obj2)
+
+		// 深拷贝
+		let obj3 = {
+			name:'张三',
+			age:18
+		}
+		/* 深拷贝是复制真正的数据,在堆里新开了一块数据
+		对象之间数据独立 */
+		let obj4 = JSON.parse(JSON.stringify(obj3))
+		obj3.name = '李四'
+		obj4.age = 42
+		console.log('深拷贝',obj3,obj4)
+
+		// 深拷贝递归
+		let obj5 ={
+			a:10,
+			b:20,
+			arr:['a','b','c','d']
+		}
+
+		function copy(obj){
+			if(Array.isArray(obj)){
+				var newObj = []
+			}else {
+				var newObj = {}
+			}	
+			for(let key in obj){
+				if(typeof obj[key]=='object'){
+					newObj[key] = copy(obj[key])
+				}else{
+					newObj[key] = obj[key]
+				}
+			}
+			return newObj
+		}
+		console.log('递归',copy(obj5))
+	</script>
+</body>
+</html>
