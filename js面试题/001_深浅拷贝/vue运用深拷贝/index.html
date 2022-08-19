@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-router</title>
+  <script src="./vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <form @submit.prevent="insert">
+      <input type="text" v-model="stu.name" placeholder="名字">
+      <input type="text" v-model="stu.age" placeholder="年龄">
+      <input type="text" v-model="stu.girlFriend.name" placeholder="女朋友">
+      <button>add</button>
+    </form>
+    <ul>
+      <li v-for="(item,index) in list" :key="index">
+        姓名:{{item.name}}
+        年龄:{{item.age}}
+        女朋友:{{item.girlFriend.name}}
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          stu: {
+            name: '',
+            age: '',
+            girlFriend: {
+              name: ''
+            }
+          },
+          list: []
+        }
+      },
+      methods: {
+        insert() {
+          this.list.push(
+            this.copy(this.stu)
+          )
+        },
+        // 深度拷贝方法(递归)
+        copy(obj) {
+          let newObj = {}
+          for (let i in obj) {
+            if (obj[i] instanceof Object) {
+              newObj[i] = this.copy(obj[i])
+            } else {
+              newObj[i] = obj[i]
+            }
+          }
+          return newObj
+        }
+      }
+    })
+
+    app.mount('#app')
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 
+		总结:
+		浅拷贝方法:for in,无法拷贝深层复杂数据类型的值
+		深拷贝方法:递归,JSON.parse,可以拷贝深层复杂数据类型的值
+	 -->
+	<script>
+		// 简单数据存在栈中(数据互不影响)
+		/* let a = 10,b = a;
+		a = 20;
+		console.log(a,b) */
+
+		// 复杂数据存在堆中: 数据会互相影响(改一个都会变)
+		/* let obj1 ={id:1,name:'jack'}
+		let obj2 = obj1
+		obj1.name = 'tom'
+		obj2.id = 123
+		console.log(obj1,obj2) */
+
+		// 浅拷贝(for in方法)
+		let stu1 = {name:'小明',age:16}
+    let stu2 = {}
+    for(let i in stu1){
+      stu2[i]=stu1[i]
+    }
+		stu1.age = 28
+    stu2.name = '永强'
+    console.log('浅拷贝',stu1,stu2)
+
+		// 深拷贝:拷贝深层数组(递归)
+		/* let obj5 ={
+			a:10,
+			b:20,
+			arr:['a','b','c','d']
+		}
+		// 递归函数
+		function copy(obj){
+			if(Array.isArray(obj)){
+				var newObj = []
+			}else {
+				var newObj = {}
+			}	
+			for(let key in obj){
+				if(typeof obj[key]=='object'){
+					newObj[key] = copy(obj[key])
+				}else{
+					newObj[key] = obj[key]
+				}
+			}
+			return newObj
+		}
+		console.log('深拷贝',copy(obj5)) */
+
+		// 深拷贝:拷贝深层对象(递归)
+		/* let stu3 = {
+      name:'小明',
+      age:18,
+      friend:{
+        name:'小红'
+      }
+    }
+    function copy(obj){
+      let newObj = {}
+      for(let i in obj){
+        if(obj[i] instanceof Object){
+          newObj[i]=copy(obj[i])
+        }else{
+          newObj[i]=obj[i]
+        }
+      }
+      return newObj
+    }
+    const stu4 = copy(stu3)
+    stu4.friend.name = '小花'
+    console.log('深拷贝',stu3,stu4)
+    console.log() */
+
+		// 深拷贝: JSON方法
+		let hero1 = {
+			name:'东邪',
+			age:45,
+			friend:{
+				name:'西毒'
+			}
+		}
+		let hero2 = JSON.parse(JSON.stringify(hero1))
+		hero1.name = '北丐'
+		hero2.friend.name = '南帝'
+		console.log('深拷贝',hero1,hero2)
+
+	</script>
+</body>
+</html>
