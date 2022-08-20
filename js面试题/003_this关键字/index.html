@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <button>click</button>
+<script>
+  // 直接输出this指向全局对象(window)
+  // console.log(this)
+
+  // this放在方法中,指向调用这个方法的对象
+  /* let cat = {
+    name:'喵喵',
+    sayName(){
+      console.log(this)
+      console.log("我是"+this.name)
+    }
+  }
+  cat.sayName() */
+
+  // 全局函数是window(全局对象)的方法
+  /* function fun(){
+  console.log(this)
+  }
+  fun() // 效果等于window.fun() */
+
+  let btn = document.querySelector('button')
+  // 箭头函数没有this,会往外找,最终找到window
+  /* btn.onclick = ()=>{
+    console.log(this)
+  } */
+
+  // dom对象事件的this会指向这个dom对象
+  /* btn.onclick = function(){
+    console.log(this)
+  } */
+
+  // 构造函数:用来创建对象
+  /* function F(){
+    // this指向小f
+    this.name = '小明'
+  }
+  // new关键字会创建对象,将构造函数的this指向创建出来的对象
+  let f = new F()
+  console.log(f) */
+
+  // 计时器
+  let cat = {
+    name:'喵喵',
+    sayName(){
+      // 计时器的this指向window
+      setTimeout(function(){
+        console.log(this)
+      });
+
+      // 改成箭头函数this指向变成cat对象
+      setTimeout(()=>{
+        console.log(this)
+      });
+    }
+  }
+  cat.sayName()
+</script>
+  
+</body>
+</html>
