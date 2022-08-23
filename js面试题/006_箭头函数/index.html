@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+// 普通函数
+/* function fun1(){
+  return 100
+}
+console.log(fun1()) */
+
+// 箭头函数
+/* let fun2 = () => 200
+console.log(fun2()) */
+
+// 实际应用(箭头函数没有this)
+let person = {
+  name:'jack',
+  age:18,
+  say(){
+    // es5改变this指向方法
+    /* let self = this;
+    setTimeout(function(){
+      console.log('我是:'+self.name)
+    },500); */
+
+    // 箭头函数没有this,这里的this跳过window指向person本身
+    setTimeout(() => {
+      console.log('我是:'+this.name)
+    }, 500);
+  }
+}
+person.say()
+
+</script>
+
+</body>
+</html>

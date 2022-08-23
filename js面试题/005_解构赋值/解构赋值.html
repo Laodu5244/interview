@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+// 数组的解构赋值
+let a = 10,b=20;
+
+// es5: 让a,b的值呼唤
+/* let temp;
+temp = a;
+a = b ;
+b = temp;
+console.log(a,b); */
+
+// es6: 解构赋值
+/* [a,b] = [b,a]
+console.log(a,b); */
+
+// 对象的解构赋值
+/* let {name,age}={
+  name:'jack',
+  age:18,
+}
+console.log(name,age) */
+
+// 解构赋值的小应用
+function createStudent(){
+  let name = 'tom'
+  let age = 20
+  let friend = {
+    name:'mary'
+  }
+  return{name,age,friend}
+}
+
+let {friend,name} = createStudent()
+console.log(friend)
+console.log(name)
+
+</script> 
+
+</body>
+</html>

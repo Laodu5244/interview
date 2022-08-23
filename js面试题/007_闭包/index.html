@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+// 闭包: 函数嵌套函数,内部被return的函数就是闭包
+/* function outer(){
+  let a = 10;
+  function inner(){
+    console.log(a)
+  }
+  return inner;
+}
+let fun = outer()
+// 内部函数没有执行完成,外部函数的变量不会被销毁
+fun(); */
+
+// 应用:封装一段代码
+let module = (function(){
+  let a = 20
+  let b = 10
+  function add(){
+    return a + b
+  }
+  function sub(){
+    return a - b
+  }
+  return{ add, sub }
+})()
+let result1 = module.add()
+let result2 = module.sub()
+console.log(result1)
+console.log(result2)
+
+/* 闭包的问题:
+   因为数据不会被销毁,所以会一直占用内存空间 */
+
+</script>
+
+</body>
+</html>
