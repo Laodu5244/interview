@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+/* 每一个对象都有它的原型对象,
+它可以使用原型对象的所有属性和方法. */
+
+/* 获取原型的方法:
+1. 通过对象的__proto__获取 
+2. 通过构造函数的prototype获取
+3. 通过类的prototype获取 */
+
+// 给cat对象的原型对象(Object)定义eat方法
+/* let cat = {
+  name:'miaomiao'
+}
+cat.__proto__.eat = () =>{
+  console.log('eat fish')
+}
+// cat可以调用这个方法
+cat.eat() */
+
+// 用构造函数的prototype创建方法
+/* function Cat(name,age){
+  this.name = name;
+  this.age = age;
+}
+Cat.prototype.eat = ()=>{
+  console.log('eat fish')
+}
+let cat = new Cat('jack',18)
+cat.eat() */
+
+// 原型对象的应用
+/* let date = new Date()
+Date.prototype.format = function(){
+  let year = this.getFullYear()
+  let month = this.getMonth()+1
+  let date = this.getDate()
+  return `${year}年${month}月${date}日`
+}
+let d = date.format()
+console.log(d) */
+
+// es6类的基本语法
+class Person{
+  constructor(name,age){
+    this.name = name
+    this.age = age
+  }
+}
+Person.prototype.eat = ()=>{
+  console.log('吃火锅')
+}
+let person = new Person('jack', 18)
+person.eat()
+
+</script>
+
+</body>
+</html>
