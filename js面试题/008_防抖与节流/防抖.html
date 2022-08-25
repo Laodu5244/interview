@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text">
+
+<script>
+// 防抖: 用户触发事件过于频繁,只执行最后一次事件
+let input = document.querySelector('input')
+
+// 操作过于频繁,影响性能
+/* input.oninput = function(){
+  console.log(this.value)
+} */
+
+// 利用定时器的不断清除的方法(0.5秒内再次输入就不执行)
+// 来达到输入完成后,过0.5秒再执行的效果
+/* let time = null;
+input.oninput = function(){
+  if (time !== null){
+    clearTimeout(time)
+  }
+  time = setTimeout(() => {
+    console.log(this.value)
+  }, 500);
+} */ 
+
+// 利用闭包封装一个防抖函数
+input.oninput = debounce(function(){
+  console.log(this.value)
+},500)
+
+function debounce(fn,delay){
+  let time = null;
+  return function(){
+    if (time !== null){
+      clearTimeout(time)
+    }
+    time = setTimeout(() => {
+      // 用call方法让this指向input
+      fn.call(this);
+    }, delay);
+  } 
+}
+</script>
+</body>
+</html>

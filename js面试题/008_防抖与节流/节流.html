@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body {
+      height: 2000px;
+    }
+  </style>
+</head>
+<body>
+<!-- 
+  防抖: 只执行最后一次
+  节流: 隔一段时间执行一次
+ -->
+<script>
+// 滚动一下执行很多次,非常浪费性能
+/* window.onscroll = ()=>{
+  console.log('scroll')
+} */
+
+// 节流: 控制高频事件执行的次数
+/* let flag = true;
+window.onscroll = ()=>{
+  if(flag){
+    setTimeout(()=>{
+      console.log('hello world')
+      flag = true;
+    },500)
+  }
+  flag = false;
+} */
+
+// 闭包封装节流
+window.onscroll = throttle(function(){
+  console.log('执行次数')
+},800)
+function throttle(fn,delay){
+  let flag = true;
+  return function(){
+    if(flag){
+      setTimeout(()=>{
+        fn.call(this)
+        flag = true;
+      },delay)
+    }
+    flag = false;
+  }
+}
+</script>
+</body>
+</html>
