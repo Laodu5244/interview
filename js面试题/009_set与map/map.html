@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+/* map是见键值对,set是值的集合 */
+// 创建map(键,值都可以是任何基本类型)
+/* const map = new Map()
+map.set('hehe',123)
+map.set(true,'haha')
+map.set(345,false)
+console.log(map) */
+
+// 另一种创建方法
+const map = new Map([
+  ['hehe',true],
+  [true,'haha'],
+  [231,789],
+])
+// console.log(map)
+
+// has判断的是key(左边的)
+/* console.log(map.has('haha'))
+console.log(map.has('hehe')) */
+
+// get获取的也是key(左边的)
+/* console.log(map.get('haha'))
+console.log(map.get('hehe')) */
+
+// map的删除方法key(左边的)
+/* map.delete('hehe')
+console.log(map) */
+
+// map的添加方法set
+map.set('hello','world')
+console.log(map)
+
+</script>
+</body>
+</html>
