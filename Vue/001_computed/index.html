@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./vue.min.js"></script>
+</head>
+<body>
+
+<div class="app">
+	<h2>{{_title}}</h2>
+	<input type="text" v-model="firstName">
+	<input type="text" v-model="lastName">
+	<h3>{{fullName}}</h3>
+	<button @click="change">change</button>
+</div>
+
+<script>
+new Vue({
+	el:'.app',
+	data(){
+		return{
+			title:'computed',
+			firstName:'张',
+			lastName:'三',
+		}
+	},
+	computed:{
+		// 简写
+		_title(){
+			// 计算属性的结果会被缓存，数据变化后才会重新计算
+			return this.title + '的两种写法'
+		},
+		// 如果需要set方法,改成复杂写法
+		fullName: {
+	    // getter(获取数据)
+	    get(){
+	      return this.firstName + ' ' + this.lastName
+	    },
+	    // setter(修改数据)
+	    set(value){
+	    	// value: 获取修改后的值
+	      console.log(value)
+	      // 第一个值赋给firstName
+	      this.firstName = value[0]
+	      // 最后一个值赋给lastName
+	      this.lastName = value[value.length-1]
+	    }
+	  }
+	},
+	methods:{
+		change(){
+			this.fullName = '李'+' '+'四'
+		}
+	}
+})
+</script>
+
+<style>
+body{
+	background-color: #ddd; 
+}
+</style>
+
+</body>
+</html>

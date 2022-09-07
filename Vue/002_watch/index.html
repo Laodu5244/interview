@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./vue.min.js"></script>
+</head>
+<body>
+
+<div class="app">
+	<h2>{{title}} </h2>
+	<button @click="change">点击改变标题</button>
+	<span>您点了: {{count}} 次</span>
+	<hr>
+	<input type="text" v-model="message.inp">
+	<p>{{message.inp}}</p>
+</div>
+
+<script>
+new Vue({
+	el:'.app',
+	data(){
+		return{
+			title:'Watch的属性和方法',
+			count:0,
+			message:{
+				inp:'请输入',
+			}
+		}
+	},
+	methods:{
+		change(){
+			if(this.title == 'Watch的属性和方法'){
+				this.title = 'Watch的两种写法你都会了吗?'
+			}else{
+				this.title = 'Watch的属性和方法'
+			}
+		}
+	},
+	watch:{
+		// 简单写法,如果要添加immediate或者deep,改成复杂写法
+		title(){
+			this.count++
+		},
+		// 复杂写法(监视引用类型内部的值,和添加属性,使用复杂写法)
+		message:{
+			handler(){
+				console.log(this.message.inp)
+			},
+			// 开启深度监视,可以监视引用类型内部的值
+			deep:true,
+			// 立即执行一次
+			immediate:true
+		}
+	}
+})
+</script>
+
+<style>
+body{
+	background-color: #ddd; 
+}
+button{
+	background-color: greenyellow;
+	cursor: pointer;
+	letter-spacing: 2px;
+}
+</style>
+	
+</body>
+</html>
