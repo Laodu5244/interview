@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<div class="box">
+	<div class="item"></div>
+	<div class="item"></div>
+	<div class="item"></div>
+</div>
+
+<style>
+
+ /* flex-grow 定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大
+ flex-shrink 定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小
+ flex-basis给上面两个属性分配多余空间之前, 计算项目是否有多余空间, 默认值为 auto, 即项目本身的大小； */
+
+body{
+	background-color: #e3e3e3;
+}
+.box{
+	width:300px;
+	height:300px;
+	margin: 100px auto;
+	border:1px solid #555;
+  display: flex;
+}
+.item{
+	width: 50px;
+	height:50px;
+	border-radius: 25px;
+	background-color: orange;
+}
+.item:nth-child(2),.item:nth-child(3){
+  flex:1; 
+  /* flex:1 是flex-grow:1; flex-shrink:1; flex-basis:auto;的缩写,让一个或者多个元素铺满主轴  */
+}
+</style>
+</body>
+</html>
