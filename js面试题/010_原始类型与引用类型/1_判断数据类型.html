@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<!-- 原始类型与引用类型 -->
+<script>
+// 七种原始数据类型
+let a = 10
+let b = 'hello html'
+let c = false
+let d = null
+let e = undefined
+// Symbol的值是唯一的
+let f = Symbol('F')
+// bigInt能获取数值最大值之后无法获取的值
+let g = BigInt('12312312312312312312323423452')
+
+// console.log(a,b,c,d,e,f,g)
+
+// 数组,对象,函数都是引用类型
+let h = {}
+let i = []
+let j = function(){}
+let k = ()=>{}
+// console.log(h,i,j)
+
+// 数据类型的判断
+/* console.log(typeof a)
+console.log(typeof b)
+console.log(typeof f)
+console.log(typeof g) */
+
+// typeof无法判断null和引用类型
+/* console.log(typeof d)
+console.log(typeof h)
+console.log(typeof i)
+console.log(typeof j) */
+
+// Object.prototype.toString.call()可以判断所以类型
+console.log(Object.prototype.toString.call(a))
+console.log(Object.prototype.toString.call(d))
+console.log(Object.prototype.toString.call(g))
+console.log(Object.prototype.toString.call(h))
+console.log(Object.prototype.toString.call(i))
+console.log(Object.prototype.toString.call(j))
+console.log(Object.prototype.toString.call(k))
+
+</script>
+
+</body>
+</html>

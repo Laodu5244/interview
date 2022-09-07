@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+// 原始类型传参数
+function fun(m){
+  m = 100
+}
+let n = 10;
+// 函数内部的m不会影响外部的n(实参不会受到影响)
+fun(n)
+console.log(n)
+
+// 引用类型的传参
+function f(a){
+  // push: 往末尾追加一项
+  a.push(10)
+}
+let arr = [1,2,3]
+f(arr)
+// 引用类型的传参会影响数据,原始类型不会
+console.log(arr)
+</script>
+
+</body>
+</html>

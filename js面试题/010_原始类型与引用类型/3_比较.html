@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+// 原始类型的比较
+let str1 = 'hello world'
+let str2 = 'hello world'
+// 返回true(比较的是值是否相等)
+console.log(str1 === str2)
+
+// 复杂类型的比较
+let p1 = { name:'jack'}
+let p2 = { name:'jack'}
+// 比较的是引用,返回false(这是两个名字都叫jack的人)
+console.log(p1 === p2)
+
+let p3 = { name:'tom'}
+let p4 = p3
+// 返回true(比较的是同一个引用,指向同一个对象)
+console.log(p3 === p4)
+</script>
+
+</body>
+</html>

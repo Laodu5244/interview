@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+// 原始类型赋值
+let str1 = 'hello'
+// 原始类型是真的赋值
+let str2 = str1
+
+str1 = 'world'
+console.log(str1)
+console.log(str2)
+
+// 引用类型赋值
+let person1 = { name:'张三' } 
+// 引用类型赋值的是引用,不是真正的数据(深浅拷贝可以解决)
+let person2 = person1
+
+person1.name = '李四'
+console.log(person1)
+console.log(person2)
+</script> 
+
+</body>
+</html>
