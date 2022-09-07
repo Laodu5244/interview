@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+let person1 = {
+  name: '张三',
+  age: 18,
+  sister:{
+    name:'小红',
+    father:{
+      name:'老刘'
+    }
+  }
+}
+
+// 直接赋值指向同一个引用,一个数据变化都变化
+/* let person2 = person1
+person1.name = '李四' */
+
+// 闭包封装浅拷贝(for in)
+/* function copy(obj){
+  let newObj = {}
+  for (let i in obj){
+    newObj[i] = obj[i]
+  }
+  return newObj
+}
+
+let person2 = copy(person1)
+person1.name = '李四'
+person2.age = 21 */
+
+// 递归: 自己调用自己
+/* function add(n){
+  if (n == 1)return 1
+  // 计算1-100的加和
+  return n + add(n-1)
+}
+console.log(add(100)) */
+
+// 注意: 以下代码无线循环,会报错或者崩溃
+/* function f(){
+  f()
+}
+f() */
+
+// 闭包封装深拷贝(for in 加递归(自己调自己))
+/* function copy(obj){
+  let newObj = {}
+  for (let i in obj){
+    // instanceof: 判断一个数据是什么类型(返回布尔值)
+    if(obj[i] instanceof Object){
+      // 如果i是对象,继续调用copy()拷贝下一层
+      newObj[i] = copy(obj[i])
+    }else{
+      newObj[i] = obj[i]
+    }
+  }
+  return newObj
+}
+
+let person2 = copy(person1)
+person1.name = '李四'
+person2.sister.name = '玲玲'
+person2.sister.father.name = '老王' */
+
+// JSON方法实现深拷贝,原理:
+// 将一个对象转成json字符串,再转成对象实现深拷贝
+let person2 = JSON.parse(JSON.stringify(person1))
+person1.name = '李四'
+person2.sister.name = '玲玲'
+person2.sister.father.name = '老王'
+
+
+console.log('person1',person1)
+console.log('person2',person2)
+
+</script>
+
+</body>
+</html>
