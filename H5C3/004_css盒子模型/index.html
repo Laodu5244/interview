@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<!-- 
+盒子模型:
+  Margin(外边距) - 边框外的区域，外边距是透明的。
+  Border(边框) - 围绕在内边距和内容外的边框。
+  Padding(内边距) - 内容周围的区域，内边距是透明的。
+  Content(内容) - 盒子的内容，显示文本和图像。
+
+标准盒子的大小 = content + border + padding + margin
+怪异盒子的大小 = width（content + border + padding）+ margin
+
+区别:
+标准盒子padding会撑大盒子,怪异盒子不会
+ -->
+<div class="box1">content-box</div>
+<div class="box2">border-box</div>
+
+<style>
+body{
+ background-color: skyblue;
+}
+.box1,.box2{
+  width:150px;
+  height:150px;
+  background-color: orange;
+  color: #fff;
+  font-size: 25px;
+  text-align: center;
+  /* line-height: 150px; */
+  /* 外边距 */
+  margin: 100px auto 0;
+  /* 边框 */
+  border: 10px solid greenyellow;
+  /* 内边距 */
+  padding: 20px;
+}
+.box1{
+  /* 标准盒子模型(默认) */
+  box-sizing: content-box;
+}
+.box2{
+  /* 怪异盒子模型 */
+  box-sizing: border-box;
+}
+</style>
+
+</body>
+</html>
