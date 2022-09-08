@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<div class="box">
+	<div class="item"></div>
+	<div class="item"></div>
+	<div class="item"></div>
+</div>
+
+<style>
+.box{
+	width:300px;
+	height:150px;
+	margin: 100px auto;
+	border:1px solid #555;
+  display: flex;
+}
+.item{
+	width: 50px;
+	height:50px;
+	border-radius: 25px;
+	background-color: orange;
+}
+
+/* flex的space-aroun和space-between的不同 */
+
+/* 两端对齐 */
+/* .box{
+  justify-content:space-between;
+} */
+
+/* 外边距平均分配 */
+/* .box{
+  justify-content:space-around;
+} */
+
+/* 如何换行 */
+/* .box{
+  width:100px;
+  flex-wrap: wrap;
+} */
+
+/* 如何改变主轴方向 */
+/* .box{
+  flex-direction: column;
+} */
+</style>
+</body>
+</html>
