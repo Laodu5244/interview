@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<!-- 
+  权重顺序:
+  !important    无限大
+  行内样式       1000
+  id选择器       100
+  类,伪类选择器   10
+  标签,伪元素     1
+  通配符         0 (最小)
+ -->
+
+<!-- 行内样式的权重是1000 -->
+<div 
+  class="box" 
+  id="box" 
+  style="color:brown"
+  class="active"
+>box</div>
+
+<style>
+div{
+  width:200px;
+  height:100px;
+  margin: 100px auto;
+  background-color: orange;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 100px;
+}
+
+/* 通配符权重最小 */
+*{
+  color: blue;
+}
+
+/* 标签元素的权重是1 */
+div{
+  color: hotpink;
+}
+
+/* 伪元素元素的权重是1 */
+/* div::after{
+  content: '$';
+  color:darkslategrey;
+} */
+
+/* 类选择器的权重是10 */
+.box{
+  color:aliceblue;
+}
+
+/* 伪类选择器的权重是10 */
+div:hover{
+  color:black;
+}
+
+/* id选择器的权重是100 */
+#box{
+  color:green;
+}
+
+/* 行内样式的权重是1000 */
+
+/* !important的权重无限大,会覆盖其他所有样式 */
+div{
+  color:gray !important;
+}
+
+</style>
+
+</body>
+</html>
