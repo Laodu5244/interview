@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<button id="btn">click</button>
+
+<script src="./axios.min.js"></script>
+<script>
+let btn = document.getElementById('btn')
+let _url = 'http://jsonplaceholder.typicode.com/posts'
+btn.onclick = async() => {
+	// axios.get的返回值是promise对象
+	let res = await axios.get(_url)
+	console.log(res)
+} 
+</script>
+</body>
+</html>

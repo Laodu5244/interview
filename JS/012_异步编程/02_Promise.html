@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+	// promise获取异步数据
+  let tea = new Promise((resolve,reject)=>{
+  	setTimeout(()=>{
+  		let flag = true;
+  		// resolve是promise的成功回调
+			if(flag){
+				resolve('奶茶')
+			}else{
+				reject('奶茶获取失败')
+			}
+		},1000)
+  })
+  let hotPot = new Promise((resolve,reject)=>{
+  	setTimeout(()=>{
+  		let flag = true;
+  		// resolve是promise的成功回调
+			if(flag){
+				resolve('火锅')
+			}else{
+				reject('火锅获取失败')
+			}
+		},1000)
+  })
+	
+	// 按次序依次获取(.then方法)
+	/*tea.then(data =>{
+		console.log(data)
+		return hotPot;
+	}).then(data =>{
+		console.log(data)
+	}).catch(err =>{
+		console.log(err)
+	})*/
+
+	// async await获取异步数据
+	async function fun(){
+		let _tea = await tea
+		let _hotPot = await hotPot
+		console.log(_tea,_hotPot)
+	}
+	fun()
+</script>
+
+</body>
+</html>

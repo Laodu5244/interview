@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+  /* function getTea(){
+		setTimeout(()=>{
+			return '奶茶'
+		},2000)
+	}
+	let result = getTea()
+	// undefined,return不能获取异步的数据
+	console.log(result)*/
+
+  // 获取异步数据方法: 回调函数(已经废弃)
+	function getTea(fun){
+		setTimeout(()=>{
+			fun('奶茶')
+		},2000)
+	}
+	function getHotPot(fun){
+		setTimeout(()=>{
+			fun('火锅')
+		},1000)
+	}
+	function getBeer(fun){
+		setTimeout(()=>{
+			fun('啤酒')
+		},500)
+	}
+
+	// 回调地狱
+	getTea((data)=>{
+		console.log(data)
+		getHotPot((data)=>{
+			console.log(data)
+			getBeer((data)=>{
+				console.log(data)
+			})
+		})
+	})
+
+</script>
+	
+</body>
+</html>
