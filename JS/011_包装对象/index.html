@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+/* 
+包装对象:
+为什么原始类型可以调用属性和方法?
+浏览器后台创建了new String(),new Number(),new Boolean()
+当原始类型调用属性或方法时
+浏览器后台会自动将他们转换成对应的包装对象.
+*/
+
+// 数值可以调用toString()方法
+/*let num = 123;
+// 把数值转换成字符串
+console.log(num.toString())*/
+
+// 字符串可以调用split()方法
+/*let str = 'hello world'
+// 把字符串拆分成数组
+console.log(str.split(' '))*/
+
+/*let msg = 'hello world'
+// new String(msg)执行之后立即销毁
+msg.name = 'jack' 
+// 反回undefined
+console.log(msg.name) */
+
+/* 注意: 实际开发过程中不建议主动创建包装对象 */
+
+// 手动创建一个包装对象
+let num1 = new Number(123)
+// 反回Number { 123 }
+console.log(num1)
+
+let num2 = new Number(123)
+// 返回false(两个对象引用的比较)
+console.log(num1 === num2)
+
+let num3 = 123
+// 返回false(数值和对象的比较)
+console.log(num1 === num3)
+
+</script>
+
+</body>
+</html>
