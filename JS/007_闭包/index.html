@@ -7,7 +7,12 @@
 <body>
 
 <script>
-// 闭包: 函数嵌套函数,内部被return的函数就是闭包
+/*
+闭包定义:
+狭义: 函数嵌套函数,内部函数就是闭包
+广义: js的所有函数都是闭包(所有函数都在window对象中)
+*/
+
 /* function outer(){
   let a = 10;
   function inner(){
@@ -36,8 +41,10 @@ let result2 = module.sub()
 console.log(result1)
 console.log(result2)
 
-/* 闭包的问题:
-   因为数据不会被销毁,所以会一直占用内存空间 */
+/* 
+闭包的问题:
+因为数据不会被销毁,所以会一直占用内存空间
+*/
 
 </script>
 

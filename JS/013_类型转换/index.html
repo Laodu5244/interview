@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<div class="container">
+	<input type="text" id="i1"> <br>
+	<input type="text" id="i2"> <br>
+	<button id="b">计算加法</button>
+</div>
+
+<script>
+function el(e){
+	return document.getElementById(e)
+}
+let i1 = el('i1'), i2 = el('i2'), b = el('b')
+
+/*b.onclick = ()=>{
+	let v1 = i1.value
+	let v2 = i2.value
+	// 两个字符串的拼接,不是我们要的结果
+	console.log(v1+v2)
+}*/
+
+/*显式转换(强制)*/
+/*b.onclick = ()=>{
+	let v1 = Number(i1.value)
+	let v2 = Number(i2.value)
+	console.log(v1+v2)
+}*/
+
+// null和undefined没有包装对象
+/*let n = null;
+// 报错
+let str = n.toString()
+console.log(str)*/
+
+// parseInt和parseFloat
+/*let msg1 = '12345.678abc123'
+let msg2 = '12345.678abc123'
+// parseInt: 转换并截取整数
+let num1 = parseInt(msg1)
+// parseFloat:小数点之后的数字也会转换
+let num2 = parseFloat(msg2)
+console.log(num1,num2)*/
+
+/* 隐式转换(自动) */
+
+// if语句的隐式转换
+/*let text = 'hello world'
+// if语句会把字符串转换成true
+if(text){
+	console.log(text)
+}
+let t = ''
+// if语句会把空字符串转换成false
+if(t){
+	console.log(t)
+}*/
+
+// 0和NaN转换成false,其他数值转换成true
+/*let num1 = 123
+if(num1){
+	console.log(num1)
+}*/
+
+// 所有对象,数组都会转换成true
+/*let obj = {}
+if(obj){
+	console.log(obj)
+}
+let arr = []
+if(arr){
+	console.log(arr)
+}*/
+
+// 当n=0时,while会把判断变成false,达到终止循环的效果
+/*let n = 5;
+while(n){
+	console.log(n)
+	n--;
+}*/
+
+// 逻辑与和逻辑或的返回值正好相反
+
+// 逻辑与左侧的值先转换成布尔值
+// 如果为true,逻辑与的返回值是第二个值
+/*console.log(10 && 20)
+console.log('hello' && 'world')*/
+
+// 如果为false,逻辑与的返回值是第一个值
+/*console.log(0 && 20)
+console.log(0 && NaN)
+console.log('' && 'world')*/
+
+// 逻辑或左侧的值先转换成布尔值
+// 如果为true,逻辑或的返回值是第一个
+/*console.log('hello' || 'world')
+// 如果为false,逻辑或的返回值是第二个
+console.log(0 || 20)*/
+
+// 逻辑非的返回值与数值本身正好相反
+/*let _msg = ''
+console.log(!_msg)*/
+
+// ==和===的不同,==只比较值
+console.log( 1 == '1' )
+// ===除了比较值,还比较类型(推荐)
+console.log( 1 === '1' )
+</script>
+
+</body>
+</html>

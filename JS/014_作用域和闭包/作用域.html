@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+// 局部变量,函数外不能执行
+/*function fun(){
+	let str = 'hello world'
+}
+fun()
+// 报错:str is not defined
+console.log(str)*/
+
+/*if(true){
+	// es5没有块级作用域(var被废弃了,不再使用)
+	// var msg = 'hello' // 变量会提升到全局(不推荐)
+	// let,const有块级作用域
+	let msg = 'hello'  // 变量不会提升,报错
+}
+console.log(msg)*/
+
+// 块级作用域
+let m = 20
+{
+	let n = 30
+	{
+		let m = 40
+		// 作用域会就近寻找数据和方法
+		// 本级没有就往上级找,最终找到全局
+		// 全局有:执行, 没有:报错undefined
+		console.log(m)
+		console.log(n)
+	}
+}
+
+</script>
+
+</body>
+</html>

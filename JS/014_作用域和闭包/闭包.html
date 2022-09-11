@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+/*
+闭包定义:
+狭义: 函数嵌套函数,内部函数就是闭包
+广义: js的所有函数都是闭包(所有函数都在window对象中)
+*/
+
+// 闭包的问题: 数据不会销毁,,滞留在内存空间,容易导致内存泄露
+
+// 闭包的作用(封装一段代码)
+function outer(){
+	let n = 10
+	function inner(){
+		console.log(n)
+	}
+	//  加括号返回inner函数的返回值
+	// return inner() 
+	// 不加括号直接返回inner函数本身
+	return inner;
+}
+// outer()的返回值是inner函数
+let fun = outer()
+// 闭包的数据不会被销毁,可以多次调用
+fun()
+fun()
+
+</script>
+
+</body>
+</html>
