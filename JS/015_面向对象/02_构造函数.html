@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+/*
+es5没有class 
+用构造函数来模拟类
+用new + 构造函数来对象实例化
+用prototype来继承
+*/
+
+// 创建一个User构造函数
+function User(username,password){
+  this.username = username
+  this.password = password
+  this.login = function(){
+  	if(this.username === 'xiaoming' && this.password === '123456'){
+			console.log('登录成功')
+		}else{
+			console.log('登录失败')
+		}
+  }
+}
+/*var user = new User('xiaoming','123456')
+console.log(user)
+user.login()*/
+
+function Admin(username,password){
+	this.username = username
+  this.password = password
+}
+// 让Admin的原型继承User的原型
+Admin.prototype = new User()
+let admin = new Admin('xiaoming','123456')
+console.log(admin)
+admin.login()
+
+// Object是原型链的最顶端
+Object.prototype.sing = ()=>{
+  console.log('I love rock and roll')
+}
+admin.sing()
+
+var a = [3,2,1]
+a.sing()
+
+</script>
+
+</body>
+</html>

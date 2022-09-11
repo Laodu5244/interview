@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-- 
+面向过程的代码更简洁,解决问题的方法更直接
+面向对象会大幅度提升代码量,但是对需求变更,功能拓展更有优势
+ -->
+<script>
+// 新建一个user类
+class User{
+	// 构造函数
+	constructor(username,password){
+		// 添加属性
+		this.username = username;
+		this.password = password;
+	}
+	// 添加login方法
+	login(){
+			if(this.username === 'xiaoming' && this.password === '123456'){
+				console.log('登录成功')
+			}else{
+				console.log('登录失败')
+			}
+		}
+}
+
+// 创建User类的实例对象
+/*let user1 = new User('xiaoming','123456')
+let user2 = new User('xiaohong','1234567')
+user1.login()
+user2.login()*/
+
+// 创建一个Admin类,继承自User类(User的子类)
+// Admin类的实例可以使用User类的属性和方法
+class Admin extends User {
+	constructor(username,password,id){
+		// super:继承User的属性
+		super(username,password)
+		this.id = id
+	}
+	// 添加control方法
+	control(){
+		console.log('对用户进行操作')
+	}
+}
+
+let admin = new Admin('xiaoming','123456','007')
+// 调用User的方法
+admin.login()
+// 调用Admin独有的方法
+admin.control()
+console.log(admin.id)
+
+</script>
+
+</body>
+</html>

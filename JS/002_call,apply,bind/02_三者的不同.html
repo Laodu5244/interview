@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+	let cat = {
+		name: '喵喵'
+	}
+	let dog = {
+		name: '汪汪',
+		speak(food1,food2){
+			console.log(`我是${this.name},我喜欢吃${food1}和${food2}`)
+		}
+	}
+	dog.speak('骨头','肉')
+	// call的第一个参数是调用它的对象,后面是传参,依次排列
+	dog.speak.call(cat,'鱼','老鼠')
+	// apply的第一个参数是调用它的对象,传参是数组形式
+	dog.speak.apply(cat,['鱼','老鼠'])
+	// bind不能直接调用,而是做为返回值,要用变量接一下再调用
+	let fun = dog.speak.bind(cat,'鱼','老鼠')
+	fun()
+	// 如果想立即执行，可以这样调用
+	dog.speak.bind(cat,'鱼','老鼠')()
+</script>
+
+</body>
+</html>

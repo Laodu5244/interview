@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+// call,apply,bind都会改变this的指向
+
+let person1 = {
+  name:'东邪' 
+}
+let person2 = {
+	name:'西毒',
+	speak(){
+		console.log('我是'+this.name)
+	}
+}
+
+/*person2.speak()
+// call的第一个参数是一个对象,使this指向这个对象
+person2.speak.call(person1)*/
+
+function Person(){
+	this.login = ()=>{
+		console.log('登录成功')
+	}
+}
+function User(){
+	this.change = ()=>{
+		console.log('增删改查')
+	}
+}
+function Admin(){
+	// 使用call让admin可以使用user和person的方法
+	// User.call(this)
+	// Person.call(this)
+
+	// apply写法
+	// User.apply(this)
+	// Person.apply(this)
+
+	// bind写法
+	User.bind(this)()
+	Person.bind(this)()
+}
+
+let admin = new Admin()
+admin.change()
+admin.login()
+
+</script>
+
+</body>
+</html>
