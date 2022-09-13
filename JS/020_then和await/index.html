@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<!-- 
+then和await的不同:
+1.then有错误的回调,await没有(可以用try,catch实现)
+2.await不用保存当前的堆栈信息,节省内存
+3.await必须用在async函数中,async函数返回的是Promise对象
+-->
+<script>
+  async function fn1(){
+  return 111
+}
+let f1 = fn1()
+// 返回 fulfilled:111
+console.log(f1)
+
+const fn2 = ()=>{
+  f1.then((res)=>{
+    // 返回f1的执行结果
+    console.log(res)
+  })
+}
+fn2() 
+
+async function a(){
+  return 'aaa'
+}
+const b = async()=>{
+  console.log(await a())
+}
+b()
+</script>
+
+</body>
+</html>

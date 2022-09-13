@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<div class="app">
+	<h2 ref="h2">{{title}} </h2>
+  <input type="button" value="按钮" @click="event">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+new Vue({
+	el:'.app',
+	data(){
+		return{
+			title:'vue的this.$nextTick方法',
+		}
+	},
+	methods:{
+		event(){
+      this.title = '$nextTick是异步微任务'
+
+      // 此时dom还没有刷新,所以打印的是老数据
+      console.log('直接打印:',this.$refs.h2.innerHTML)
+      
+      // this.$nextTick是异步操作,在dom更新之后执行
+      this.$nextTick(()=>{
+        console.log('$nextTick打印:',this.$refs.h2.innerHTML)
+      })
+
+      // 计时器也可以达到同样的效果
+      setTimeout(()=>{
+        console.log('$计时器打印:',this.$refs.h2.innerHTML)
+      })
+    }
+	},
+})
+</script>
+	
+</body>
+</html>

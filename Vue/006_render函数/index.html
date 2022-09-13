@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+
+<div class="app"></div>
+
+<script>
+/*  render函数可以创建虚拟Dom(vnode)
+    第一个参数,必需有,是要渲染的html标签 
+    第二个参数是标签的属性(可以多个)
+    第三参数是标签的子级元素,与第二个参数的domProps冲突  */
+new Vue({
+	el:'.app',
+  render(createElement){
+    // render函数(createElement的返回值是一个虚拟Dom)
+    let ele = createElement('div',{
+      // 设置标签类名
+      class:'box',
+
+      // 设置标签内容(与第三个参数冲突)
+      // domProps:{ innerText:'这是一个render函数' },
+
+      // 设置标签样式
+      style:{color:'#f00',fontSize:'25px'}
+      // 第三参数与domProps冲突,要关掉domProps才有效
+    },[
+      createElement('p','前端开发有点意思'),
+      createElement('h3','你学废了吗'),
+    ])
+    console.log(ele)
+    return ele
+  }
+})
+</script>
+	
+</body>
+</html>
