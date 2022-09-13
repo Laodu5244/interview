@@ -1,3 +1,1 @@
-001_深浅拷贝
-002_call,apply,bind
-003_this关键字
+关于js的面试题
