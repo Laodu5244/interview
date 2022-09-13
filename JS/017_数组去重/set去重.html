@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+let arr = ['hello','world','vue','php','world','vue']
+
+function fn(arr){
+  return new Set(arr)
+}
+
+let result = fn(arr)
+// 拓展运算符
+console.log([...result])
+
+// Array.from转换
+/* let a = Array.from(result)
+console.log(a) */
+
+// 简写
+console.log(...new Set(arr))
+
+</script>
+
+</body>
+</html>

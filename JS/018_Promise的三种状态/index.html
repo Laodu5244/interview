@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+/* 
+Promise有三种状态:
+1.pending(正在等待结果)  
+2.fulfilled(成功的结果)  
+3.rejected(失败的结果)
+Promise的状态只能改变一次(从等待到成功,或者从等待到失败)
+*/
+async function fn1(){
+  return Promise.resolve(111)
+}
+async function fn2(){
+  return 222
+}
+function fn3(){
+  return Promise.reject(333)
+}
+
+let  f1 = fn1()
+let  f2 = fn2()
+let  f3 = fn3()
+
+// 返回pending,正在等待一个结果(已经有值)
+console.log(f1)
+// 返回fulfilled,成功了
+console.log(f2)
+// 返回rejected,失败了
+console.log(f3)
+
+// 打印失败的结果
+f3.catch(err =>{
+  console.error(err)
+})
+</script>
+
+</body>
+</html>

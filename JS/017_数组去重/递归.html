@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<div></div>
+
+<script>
+var arr = [3,2,3,4,5,4]
+
+function fn(arr){
+  var _arr = arr;
+  var len = _arr.length;
+  _arr.sort(function(a,b){
+    return a-b
+  })
+  console.log(_arr)
+  
+  // 递归
+  function loop (inx){
+    // 先写退出规则
+    if(inx >= 1){
+      // 比较的规则
+      if(_arr[inx] === _arr[inx-1]){
+        _arr.splice(inx,1)
+      }
+      loop(inx - 1)
+    }
+  }
+  loop(len - 1)
+  return _arr
+}
+console.log(fn(arr))
+</script>
+
+</body>
+</html>

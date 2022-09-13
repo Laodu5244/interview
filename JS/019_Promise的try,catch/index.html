@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+// 同步的异常捕获
+/* try {
+  throw new Error(666)
+} catch (error) {
+  console.error(error)
+}
+ */
+// Promise的异步的异常捕获
+async function fn1(){
+  let promise = Promise.reject(666)
+  // 返回失败的结果
+  console.log(promise)
+  try {
+    // 等待失败的结果
+    await promise
+  } catch (error) {
+    console.error('err',error)
+  }
+}
+fn1()
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<div></div>
+
+<script>
+
+// 双重for循环实现数组(代码比较多,但是逻辑比较清晰)
+let arr = [2,3,4,1,4,3]
+function fn(arr){
+  // 新数组
+  let _arr = []
+  for(let i=0; i<arr.length; i++){
+    console.log(arr[i])
+    let flag = true;
+    
+    for(let j=i+1; j<arr.length; j++ ){
+      if(arr[i] === arr[j]){
+        // 相等说明有重复
+        flag = false;
+        break; //跳出
+      }else {
+        // 不重复
+        flag = true;
+      }
+    }
+
+    // 如果都不相等,放入新数组
+    if(flag){
+      _arr.push(arr[i])
+    }
+  }
+  console.log(_arr)
+}
+fn(arr)
+</script>
+
+</body>
+</html>

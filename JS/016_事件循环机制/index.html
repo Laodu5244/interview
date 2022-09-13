@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<!-- 
+  1.js事件机制: 单线程,非阻塞
+  2.同步任务都在主线程执行栈执行
+  3.异步任务不进入主线程,进入任务队列
+  4.异步任务分宏任务和微任务:
+  (1)宏任务: 计时器,ajax等
+  (2)微任务: Promise.then,async/await,nextTick
+  (3)每次执行宏任务之前都会查找队列中有没有微任务,
+  有微任务先执行微任务
+  (4)微任务在dom渲染之前,宏任务在dom渲染之后
+-->
+<script>
+
+// 案例1
+/* function a(){
+  b()
+  console.log('aaa')
+}
+function b(){
+  console.log('bbb')
+  setTimeout(()=>{
+    console.log('ccc')
+  },1000)
+}
+// b,a,c计时器是异步任务,在主线程执行结束才执行
+a() */
+
+// 案例2
+console.log(1)
+
+setTimeout(() => {
+  console.log(2)
+},0);
+
+Promise.resolve().then(()=>{
+  console.log((3))
+})
+// 1,4,3,2,主线程的1,4先执行
+// 微任务和宏任务都会进队列,微任务先执行
+console.log(4)
+
+</script>
+
+</body>
+</html>
