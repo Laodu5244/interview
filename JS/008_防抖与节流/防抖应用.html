@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<input type="button" value="click" id="input">
+<h2 id="h2">数字</h2>
+
+<script>
+let input = document.querySelector('#input')
+let h2 = document.querySelector('#h2')
+let num = 0
+let timer = null;
+
+// 每点击一次执行一次,浪费性能
+/* input.onclick= ()=>{
+  console.log('按钮点击了')
+  h2.innerHTML = ++num
+} */
+
+// 防抖
+input.onclick= ()=>{
+  console.log('按钮点击了')
+  if(timer !== null){
+    clearTimeout(timer)
+  }
+  timer = setTimeout(()=>{
+    h2.innerHTML = `触发次数: ${++num}`
+  },500)
+}
+
+</script>
+
+</body>
+</html>

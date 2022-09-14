@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<div class="box"></div>
+<!-- 
+宏任务与微任务:
+1. 宏任务: 计时器,ajax
+2. 微任务: promise的then/catch/finally, async/await,nextTick
+3. 执行顺序: 主线程 > 微任务 > DOM渲染 > 宏任务
+ -->
+<script>
+// 1,3,5,4,2
+/* console.log(111)
+
+setTimeout(() => {
+  console.log(222) 
+});
+
+new Promise(()=>{
+  // promise本身是主线程
+  console.log(333)
+})
+
+Promise.resolve().then(()=>{
+  console.log(444)
+})
+
+console.log(555) */
+
+let box = document.querySelector('.box')
+box.innerText = 'DOM渲染了'
+
+new Promise((resolve, reject) => {
+  resolve()
+  // 不要在then中进行耗时的DOM操作,会影响其他DOM的渲染
+}).then(()=>{
+  alert('微任务')
+})
+
+setTimeout(()=>{
+  console.log('宏任务')
+  box.innerText = '计时器执行了'
+},2000)
+
+</script>
+
+</body>
+</html>
