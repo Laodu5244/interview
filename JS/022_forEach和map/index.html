@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<div></div>
+
+<script>
+/* 
+共同点:
+1.都循环数组的每一项
+2.都有三个参数: item,index,数组本身
+3.都没有this(指向window) 
+4.只能循环数组
+
+区别:
+1.forEach没有返回值,会改变原数组
+2.map需要返回一个新数组,不会改变原数组
+*/
+
+let arr = [4,3,2,1]
+
+/* arr.forEach((item,index,a)=>{
+  // item: 每一项
+  // index: 下标
+  // a: 数组本身 
+  console.log('forEach',item,index,a)
+})
+arr.map((item,index,a)=>{
+  // item: 每一项
+  // index: 下标
+  // a: 数组本身 
+  console.log('map',item,index,a)
+}) */
+
+// this指向window对象 
+/* arr.forEach((item,index,a)=>{
+  console.log(this)
+}) */
+
+// forEach没有返回值
+/* let x = arr.forEach((item,index,a)=>{
+  return item
+})
+// undefined
+console.log(x) */
+
+// map返回一个新数组(不改变原数组)
+/* let m = arr.map((item,index,a)=>{
+  return item+1
+})
+console.log('原数组',arr)
+console.log('新数组',m) */
+
+// forEach会改变原数组
+arr.forEach((item,index,a)=>{
+  a[index] = item * 10
+})
+console.log(arr)
+
+</script>
+
+</body>
+</html>

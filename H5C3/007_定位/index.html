@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<!-- 
+相对定位 relative:
+1. 定位原点是它本身的位置的左上角
+2. 它原来的位置依然保留
+
+绝对定位 absolute:
+1. 定位原点是最近的带定位属性的父盒子,
+   父盒子没有定位会找到body(子绝父相)
+2. 它原来的位置不会保留
+
+固定定位 fixed:
+1. 定位原点是浏览器的某个位置,位置不会因为浏览器的拖动改变
+2. 它原来的位置不会保留
+-->
+
+<div class="box">
+  <div class="pos">1</div>
+  <div class="pos re">2 relative</div>
+  <div class="pos">3</div>
+  <div class="pos ab">4 absolute</div>
+  <div class="pos">5</div>
+  <div class="pos fi">6 fixed</div>
+  <div class="pos">7</div>
+</div>
+
+<style>
+.box{
+  background-color: pink;
+  width: 500px;
+  height: 2000px;
+}
+.pos{
+  width: 100px;
+  height: 50px;
+  margin: 10px;
+  background-color: greenyellow;
+}
+.re{
+  /* 相对定位 */
+  position:relative;
+  background-color: skyblue;
+  left: 50px;
+  top: 30px;
+}
+.ab{
+  position:absolute;
+  background-color: rgb(227, 135, 235);
+  right:50px;
+  top: 30px;
+}
+.fi{
+  position: fixed;
+  right:50px;
+  bottom: 50px;
+}
+</style>
+
+</body>
+</html>
