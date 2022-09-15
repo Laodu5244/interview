@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+var a = 10;
+var obj = { a: 20 }
+// 箭头函数的this是词法作用域,作用域不会改变
+var f = () => console.log( this.a )
+f() 
+// call,apply,bind无法改写箭头函数的this
+f.call(obj)
+</script>
+
+</body>
+</html>

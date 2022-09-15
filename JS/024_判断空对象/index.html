@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<h2>js判断空对象的五种方法</h2>
+
+<script>
+let a1 = {}
+let a2 = {name:'jack',age:18}
+
+// json字符串方法
+/*console.log( JSON.stringify(a1) === '{}' )
+console.log( JSON.stringify(a2) === '{}' )*/
+
+// for in 方法
+/*let fn = (e)=>{
+	for (let i in e){
+		return false
+	}
+	return true
+}
+console.log( fn(a1) )
+console.log( fn(a2) )*/
+
+// Object.getOwnPropertyNames方法(获取全部属性名,存到数组)
+/*let n1 = Object.getOwnPropertyNames(a1)
+let n2 = Object.getOwnPropertyNames(a2)
+console.log(n1.length===0)
+console.log(n2.length===0)*/
+
+// Object.keys方法(获取可枚举属性的数组)
+/*let x1 = Object.keys(a1)
+console.log(x1.length===0)
+let x2 = Object.keys(a2)
+console.log(x2.length===0)*/
+
+// hasOwn
+let fn2 = (e)=>{
+	for (let i in e){
+		if(e.hasOwnProperty(i)){
+			return false
+		}
+	}
+	return true
+}
+console.log( fn2(a1) )
+console.log( fn2(a2) )
+</script>
+
+</body>
+</html>

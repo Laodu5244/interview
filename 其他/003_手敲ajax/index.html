@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-- 
+  ajax: 可以在不刷新页面的情况下更新部分网页内容
+  内置XHRHttpReques对象: 用于前后端交互
+-->
+<input type="button" value='getData'>
+
+<script>
+let input = document.querySelector('input')
+let url = 'http://localhost:3000/person'
+
+input.onclick = ()=>{
+	/* 手敲一个ajax请求 */
+	let xhr = new XMLHttpRequest()
+	xhr.open('get',url,true)
+
+	xhr.onreadystatechange = ()=>{
+		//  判断是否成功的条件
+		if(xhr.readyState ===4){
+			if(xhr.status === 200){
+				// 以字符串的形式返回结果
+				console.log(xhr.responseText)
+				// 转换成对象
+				console.log(JSON.parse(xhr.responseText))
+			}
+		}
+	}
+	xhr.send(null)
+}	
+
+</script>
+
+</body>
+</html>
