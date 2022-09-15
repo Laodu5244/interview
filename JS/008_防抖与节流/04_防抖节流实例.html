@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<div>
+	<input type="text" id="input">
+</div>
+
+<script>
+let input = document.getElementById('input')
+let timer = null;
+let flag = true;
+
+// 防抖
+input.addEventListener('input',()=>{
+	if(timer !== null){
+		clearTimeout(timer)
+	}
+	timer = setTimeout(() => {
+		console.log('防抖',input.value)
+	}, 500);
+})
+
+// 节流
+window.onscroll = () =>{
+	if(flag){
+		setTimeout(() => {
+			console.log('节流','执行次数')
+			flag = true;
+		}, 500);
+	}
+	flag = false;
+}
+
+</script>
+
+<style>
+  body { height: 2000px }
+</style>
+
+</body>
+</html>

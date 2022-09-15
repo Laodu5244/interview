@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="main"></div>
+</div>
+
+<div class="wrap2">
+  <img src="./Front.jpg">
+</div>
+
+<!-- 
+原理:
+子容器的padding大小,是相对于父容器的宽度来计算的
+
+解决思路:
+通过设定padding的百分比值,实现子元素的高宽比值
+-->
+
+<style>
+.wrap{
+  width:200px;
+  height:200px;
+  background:#0f0;
+  margin-bottom: 200px;
+}
+
+.main{
+  padding:100%;
+  background:#f00;
+  opacity:0.5;
+}
+
+.wrap2{
+  padding-bottom: 100%;
+  position: relative;
+}
+.wrap2 img{
+  position :absolute;
+  /* 只写宽度不写高度,让图片等比例缩放 */
+  width: 100%;
+}
+</style>
+
+</body>
+</html>

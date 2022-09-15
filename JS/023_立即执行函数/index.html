@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<!-- 
+优点:
+1.避免变量名的重复
+2.独立的作用域
+3.提高一些性能
+4.单独的js模块
+-->
+<script>
+// 匿名自执行函数(立即执行函数)
+/* (()=>{ 
+  console.log('匿名自执行函数') 
+})()  // ()可以调用函数 */
+
+// 命名空间的应用
+((win)=>{ 
+  // console.log(win) // {}
+  // 给window.fnspace添加一个方法
+  win.speak = ()=>{
+    console.log('hello window')
+  }
+  win.id = '007'
+  console.log(win)
+})(window.fnspace = window.fnspace || {})
+
+window.fnspace.speak()
+
+</script>
+
+</body>
+</html>

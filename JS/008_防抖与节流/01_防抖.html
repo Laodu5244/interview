@@ -28,11 +28,11 @@ input.oninput = function(){
   }, 500);
 } */ 
 
-// 利用闭包封装一个防抖函数
 input.oninput = debounce(function(){
   console.log(this.value)
 },500)
 
+// 利用闭包封装一个防抖函数
 function debounce(fn,delay){
   let time = null;
   return function(){

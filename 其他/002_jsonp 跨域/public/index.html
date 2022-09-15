@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<!-- 
+jsonp跨域原理:
+创建一个script标签,它不受同源策略的限制
+jsonp请求数据时,服务端返回一段js代码 
+
+局限: 只能使用get方法
+ -->
+<div>
+  <h2>jsonp跨域原理</h2>
+  <button id="btn">click</button>
+</div>
+
+<script>
+let btn = document.querySelector('#btn')
+
+// jsonp解决跨域
+btn.onclick = () => {
+  let sc = document.createElement('script')
+  sc.src = 'http://localhost:3030/jsonp?callback=test'
+  document.body.appendChild(sc)
+
+  window.test = (a) => {
+    console.log(a)
+  }
+  // 移除已经使用过的script节点
+  document.body.removeChild(sc)
+
+}
+</script>
+
+</body>
+</html>
