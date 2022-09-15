@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+function fn(a,b){
+	console.log(b)
+	return{
+		// 闭包
+		fn:function(c){
+			// 返回自己(递归)
+			return fn(c,a)
+		}
+	}
+}
+var d = fn(0) // undefined
+console.log(d) // { fn:f }
+d.fn(1) // 0
+d.fn(2) // 0
+d.fn(3) // 0
+</script>
+
+</body>
+</html>

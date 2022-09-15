@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<h2>闭包的机制</h2>
+
+<script>
+// 本案例把var改成let之后,输出undefined(let不会变量提升)
+var str = '什么是闭包'
+var obj = {
+	str:'一个案例理解闭包',
+	getData:function(){
+		// return的函数就是闭包
+		return function(){
+			// this指向window
+			console.log(this)
+			return this.str
+		}
+	}
+}
+// 在全局调用,所以输出全局的str
+console.log(obj.getData()())
+</script>
+
+</body>
+</html>
