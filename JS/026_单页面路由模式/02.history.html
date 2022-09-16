@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<!-- 
+单页面路由: 操作url地址,使内容区切换内容
+有hash,history等模式
+
+history等模式:
+1.改变url的时候,不会刷新页面
+2.监听事件: 主要使用了pushState()和popstate事件
+3.网页地址中没有#,非常美观
+4.刷新页面会报错,本案例中手动加上了#
+-->
+
+<ul>
+  <li><a data-url="#/aa">aa</a></li>
+  <li><a data-url="#/bb">bb</a></li>
+  <li><a data-url="#/cc">cc</a></li>
+</ul>
+<div id="div">默认内容</div>
+
+<script>
+let routes = [
+  {path:'#/aa',msg:'aa页面'},
+  {path:'#/bb',msg:'bb页面'},
+  {path:'#/cc',msg:'cc页面'}
+]
+
+let btns = document.querySelectorAll('a')
+let div = document.getElementById('div')
+let path;
+
+function refresh(path){
+  routes.map(item =>{
+    if(path == item.path){
+      div.innerText = item.msg
+    }
+  })
+}
+
+for(let i = 0; i<btns.length; i++){
+  // 批量监听按钮事件
+  btns[i].addEventListener('click',function(){
+    path = this.getAttribute('data-url')
+    history.pushState({name:'laodu'},null,path)
+    refresh(path)
+  })
+};
+
+// 让页面的内容更改为子路由的内容
+window.addEventListener('popstate',function(e){
+  // 点击前进后退打印
+  console.log(e)
+  refresh(location.hash) 
+})
+</script>
+
+<style>
+li{
+  margin: 5px;
+  cursor: pointer;
+}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./axios.min.js"></script>
+</head>
+<body>
+
+<button id="b1">click</button>
+<script>
+let url = 'http://localhost:3000/person'
+let url2 = 'http://localhost:3000/person2'
+
+// 相应拦截器
+axios.interceptors.response.use(
+  // 成功的回调
+  response =>{
+    if(Date.now() % 2 == 0){
+      console.log('response',response)
+      // 拦截器必须返回数据,否则await的结果就是undefined
+      return response.data
+    }else{
+      return '时间戳不是偶数,数据被拒绝'
+    }
+  },
+  // 失败的回调
+  error =>{
+    console.log('error',error)
+    // 中断promise链
+    return new Promise(()=>{})
+  }
+)
+
+b1.onclick = async() => {
+	let res = await axios.get(url)
+  // 相应拦截器添加了失败的回调,正常逻辑就不用添加了
+	console.log(res)
+}
+
+</script>
+
+</body>
+</html>
