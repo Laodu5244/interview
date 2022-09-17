@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<!-- 
+绑定事件的方法:
+1.在dom中直接绑定
+2.onclike方法绑定(获取dom节点,进行绑定)
+3.addEventListener方法绑定(事件监听)
+-->
+
+<button id="b1" onclick="b1()">111</button>
+<button id="b2">222</button>
+<button id="b3">333</button>
+
+<script>
+function b1(){
+  console.log('在dom中直接绑定')
+}
+b2.onclick = () => {
+  console.log('onclike方法绑定')
+}
+b3.onclick = () => {
+  console.log('addEventListener方法绑定')
+}
+</script>
+
+</body>
+</html>
