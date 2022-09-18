@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<!-- 
+函数式编程的特点:
+1.每个函数只做一件事
+2.每个函数只接收一个参数
+3.每个函数只返回一个结果
+
+好处: 结果可以预期,易于调试
+坏处: 增加代码量,容易出现横向多层嵌套
+!-->
+
+<script>
+function upTxt(value){
+	// 把首字母改成大写
+	return value[0].toUpperCase() + value.slice(1)
+}
+
+function turn(arr){
+	// 循环数组的每一项
+	return arr.map(upTxt)
+}
+console.log(turn(['hello','world','jave','script']))
+</script>
+
+</body>
+</html>

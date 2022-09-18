@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<!-- 
+Reflect是es6为了操作对象引入的新api
+Reflect是一个全局的对象,它所有的属性和方法都是静态的
+
+Reflect不是构造函数,不能用new调用
+-->
+
+<script>
+let person = {
+  name:'jack',
+  get age(){
+    console.log('this指向:',this)
+    return '今年18'
+  },
+  get name(){
+    console.log('this指向:',this)
+    return this.name
+  }
+}
+
+// Reflect.get方法查找并返回target对象的属性
+// 如果没有该属性,则返回undifined)
+console.log(Reflect.get(person,'age'))
+
+let obj = {
+  name:'隔壁老王'
+}
+// 第三个参数可以改变this指向
+console.log(Reflect.get(person,'name',obj))
+</script>
+
+</body>
+</html>

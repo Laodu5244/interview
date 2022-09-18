@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+
+<!--
+computed和methods的区别:
+computed
+1.computed是对数据的监听,数据改变时触发
+2.有缓存
+3.监听的数据没有变化,就从缓存中取值
+
+methods
+1.事件驱动来执行函数
+2.没有缓存
+3.每次执行时,重新计算
+-->
+
+<div id="app">
+	<h3> {{title}} </h3>
+	<p>
+		<input type="text" v-model.number='w'>
+	</p>
+	<p>
+		<input type="text" v-model.number='h'>
+	</p>
+	<p>
+		<input type="text" v-model.number='result'>
+	</p>
+
+	<button @click="getDate">getDate</button>
+</div>
+
+<script>
+new Vue({
+	el:'#app',
+	data(){
+		return{
+			title:'computed和methods的区别',
+			w:0,
+			h:0,
+		}
+	},
+	methods:{
+		getDate(){
+			console.log(new Date())
+		}
+	},
+	computed:{
+		result(){
+			return this.w * this.h
+		}
+	}
+})
+</script>
+</body>
+</html>
