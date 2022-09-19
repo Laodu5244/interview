@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<!-- 
+判断数据的类型有三种方法:
+1.typeof 只能判断基本数据类型(除了null)
+2.instanceof,用于检测prototype 属性是否出现在某个实例对象的原型链上,返回值是布尔值
+3.Object.prototype.toString.call() 可以判断所有数据类型
+-->
+
+<script>
+// 七种原始数据类型
+let a = 10
+let b = 'hello html'
+let c = false
+let d = null
+let e = undefined
+// Symbol的值是唯一的
+let f = Symbol('F')
+// bigInt能获取数值最大值之后无法获取的值
+let g = BigInt('12312312312312312312323423452')
+// 数组,对象,函数都是引用类型
+let h = {}
+let i = []
+let j = function(){}
+let k = ()=>{}
+
+// typeof
+/* console.log(typeof a)
+console.log(typeof b)
+console.log(typeof f)
+console.log(typeof g)
+console.log(typeof d)
+console.log(typeof h)
+console.log(typeof i) */
+
+// instanceof
+/*console.log(a instanceof Object)
+console.log(f instanceof Object)
+console.log(g instanceof Object)
+console.log(h instanceof Object)
+console.log(i instanceof Object)
+console.log(j instanceof Object)
+console.log(k instanceof Object) */
+
+// Object.prototype.toString.call()可以判断所以类型
+console.log(Object.prototype.toString.call(a))
+console.log(Object.prototype.toString.call(d))
+console.log(Object.prototype.toString.call(g))
+console.log(Object.prototype.toString.call(h))
+console.log(Object.prototype.toString.call(i))
+console.log(Object.prototype.toString.call(j))
+console.log(Object.prototype.toString.call(k))
+</script>
+
+</body>
+</html>

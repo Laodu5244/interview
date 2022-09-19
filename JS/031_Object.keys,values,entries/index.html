@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+let person = {
+	name:'jack',
+	age:18,
+	hobby:'music'
+}
+
+// Object.keys返回一个可枚举的键的数组
+console.log('Object.keys',Object.keys(person))
+
+// Object.values返回一个可枚举的值的数组
+console.log('Object.values',Object.values(person))
+
+// Object.entries返回一个可枚举的键值对数组
+console.log('Object.entries', Object.entries(person) )
+
+let map = new Map()
+console.log(person.keys())
+</script>
+
+</body>
+</html>

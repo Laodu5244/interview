@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="./axios.min.js"></script>
+</head>
+<body>
+
+<button id="b1">b1</button>
+<button id="b2">b2</button>
+
+<script>
+// 给axios配置默认属性
+axios.defaults.timeout = 2000
+axios.defaults.baseURL = 'http://jsonplaceholder.typicode.com'
+
+b1.onclick = ()=>{
+  let url = '/albums'
+  axios.get(url).then( result =>{
+    console.log(result.data.slice(0,5))
+  })
+}
+
+// 用axios.create创建配置对象(可以是多个)
+const instance = axios.create({
+  // 给create出来的axios配置单独的地址和超时
+  baseURL:'http://jsonplaceholder.typicode.com',
+  timeout:5000
+})
+b2.onclick = () => {
+  let url = '/posts'
+  instance.get(url).then( result =>{
+    console.log(result.data.slice(0,3))
+  })
+}
+</script>
+
+</body>
+</html>
