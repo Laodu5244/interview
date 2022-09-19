@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+/*
+Symbol是一种新的基本数据类型
+它的值不重复,不可改变,不会被覆盖
+Symbol的值是唯一的,不会和其他Symbol相等
+*/
+
+// 创建一个局部的Symbol
+/*let s1 = Symbol('s1')
+// 创建一个全局的Symbol
+let s2 = Symbol.for('s2')
+console.log(s1, s2)*/
+
+let obj = {}
+obj[Symbol('isOpen')] = 'hello world'
+obj[Symbol('isOpen')] = true
+console.log( obj )
+
+// Object.getOwnPropertySymbols返回一个Symbol数组
+console.log(Object.getOwnPropertySymbols(obj))
+
+let value = Object.getOwnPropertySymbols(obj)
+let first = value[0]
+let second = value[1]
+// 输出Sybmol的值
+console.log(obj[first],obj[second])
+</script>
+
+</body>
+</html>

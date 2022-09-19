@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./axios.min.js"></script>
+</head>
+<body>
+
+<button id="btn">click</button>	
+
+<script>
+const btn = document.getElementById('btn')
+const instance = axios.create({
+	baseURL:"http://jsonplaceholder.typicode.com",
+	timeout: 5000
+})
+
+// 请求拦截
+instance.interceptors.request.use(
+	config=>{
+		console.log('请求拦截',config)
+
+	  console.log('传递的数据',config.data)
+		return config
+  },
+  error=>{
+		return Promise.reject('请求error',error)
+	}
+)
+
+// 响应拦截
+instance.interceptors.response.use(
+	response=>{
+		console.log('响应拦截',response)
+		return response.data
+	},
+	error=>{
+		return Promise.reject('响应error',error)
+	}
+)
+
+btn.onclick = async() =>{
+	let result = await instance.post('/posts',{
+		data:{ id:'007', name:'jack' }
+	})
+	console.log('数据',result)
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+let person = {
+	name: 'jack',
+	age: 18,
+	friend: { name:'many' }
+}
+
+let _person = ({...person})
+_person.name = 'tom'
+_person.friend.name = 'lisa'
+// 只拷贝了第一层,所以拓展运算符是浅拷贝
+console.log(person)
+console.log(_person)
+</script>
+
+</body>
+</html>
